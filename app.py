@@ -2,13 +2,14 @@ from flask import Flask,send_from_directory,render_template
 import time
 from datetime import datetime
 
-app = Flask(__name__, static_url_path='', static_folder="../frontend/build")
+#app = Flask(__name__, static_url_path='', static_folder="../frontend/build")
+app = Flask(__name__);
 app.config["Secret_key"]="nanda kumar"
 
 
 @app.route("/")
 def hello_world():
-    return send_from_directory(app.static_folder,'index.html');#render_template("index.html");
+    return "<p>Hello, Index page !</p>";#send_from_directory(app.static_folder,'index.html');#render_template("index.html");
 
 @app.route("/user/<userName>")
 def printUserName(userName):
