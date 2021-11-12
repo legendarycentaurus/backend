@@ -1,15 +1,24 @@
 from flask import Flask,send_from_directory,render_template
-import time
+import time,json,os
 from datetime import datetime
+from pip._vendor import requests
 
 #app = Flask(__name__, static_url_path='', static_folder="../frontend/build")
 app = Flask(__name__);
-app.config["Secret_key"]="nanda kumar"
+os.environ['SECRET_KEY']="nand"
+app.config["SECRET_KEY"]= os.environ['SECRET_KEY']
 
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, Index page !</p>";#send_from_directory(app.static_folder,'index.html');#render_template("index.html");
+    #response = requests.get("https://api.mfapi.in/mf")
+    #print(response.json())
+    #data = response.json()
+    #out_file = open("myfile.json", "w")
+    #json.dump(data[-5:], out_file, indent = 6)
+    #out_file.close()
+
+    return "<p>Hello, Index page !</p>"+app.config["SECRET_KEY"];#send_from_directory(app.static_folder,'index.html');#render_template("index.html");
 
 @app.route("/user/<userName>")
 def printUserName(userName):
