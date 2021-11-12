@@ -5,7 +5,7 @@ from pip._vendor import requests
 
 #app = Flask(__name__, static_url_path='', static_folder="../frontend/build")
 app = Flask(__name__);
-os.environ['SECRET_KEY']="nand"
+#os.environ['SECRET_KEY']="nand"
 app.config["SECRET_KEY"]= os.environ['SECRET_KEY']
 
 
