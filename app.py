@@ -2,9 +2,11 @@ from flask import Flask,send_from_directory,render_template
 import time,json,os
 from datetime import datetime
 from pip._vendor import requests
+from flask_cors import CORS,cross_origin
 
 #app = Flask(__name__, static_url_path='', static_folder="../frontend/build")
 app = Flask(__name__);
+CORS(app)
 #os.environ['SECRET_KEY']="nand"
 app.config["SECRET_KEY"]= os.environ['SECRET_KEY']
 
@@ -24,7 +26,8 @@ def hello_world():
 def printUserName(userName):
     return "<p>Hello, "+userName+"!</p>" 
 
-@app.route('/time')
+@app.route('/time', methods=['GET'])
+@cross_origin()
 def get_current_time():
     print("Someone called /time API");
     return {'time': time.time()}
