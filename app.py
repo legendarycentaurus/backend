@@ -36,6 +36,7 @@ def printUserName(userName):
 def getAllMutualFunds():
     data = requests.get("https://api.mfapi.in/mf");
     data = data.json();
+    data= sorted(data,key=lambda record: record['schemeName'])[0:101];
     response = app.response_class(
         response=json.dumps(data),
         status=200,
